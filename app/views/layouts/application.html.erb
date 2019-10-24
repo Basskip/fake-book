@@ -28,6 +28,7 @@
         </nav>
       </div>
     </header>
+    <%= render 'shared/notifications' if user_signed_in? %>
   <% flash.each do |key, value| %>
     <%= content_tag :div, value, class: "flash #{key}" %>
   <% end %>

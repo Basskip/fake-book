@@ -1,0 +1,17 @@
+<div>
+    <h2>Notifications</h2>
+    <% requests = current_user.incoming_friend_requests %>
+    <% unless requests.empty? %>
+        <ul>
+        <% requests.each do |request| %>
+        <li>
+            <%= "#{request.sender.name} wants to be your friend" %>
+            <%= link_to "Accept", "#" %>
+            <%= link_to "Decline", "#" %>
+        </li>
+        <% end %>
+        </ul>
+    <% else %>
+        <p>No new notifications</p>
+    <% end %>
+</div>
