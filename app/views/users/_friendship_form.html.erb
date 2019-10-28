@@ -2,7 +2,7 @@
   <div id="friend_form">
     <% if @user.friends.include?(current_user) %>
       <p>You're friends!</p>
-      <%# unfriend button goes here %>
+      <%= render 'unfriend' %>
     <% else %>
       <% if current_user.requested_friends.include?(@user) %>
         <%= render 'cancel_friend' %>

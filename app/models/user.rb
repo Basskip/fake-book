@@ -11,4 +11,12 @@ class User < ApplicationRecord
   has_many :requesting_friends, through: :incoming_friend_requests, source: :sender
   has_many :friendships, dependent: :destroy
   has_many :friends, through: :friendships
+
+  def request_friend(friend)
+    if friend.requested_friends.include?(self)
+      friend.outgoing_friend_requests.find_by(receiver: self).accept
+    else
+      self.requested_friends << friend
+    end
+  end
 end

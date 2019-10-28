@@ -2,11 +2,7 @@ class FriendRequestsController < ApplicationController
 
   def create
     @user = User.find(params[:receiver_id])
-    if @user.requested_friends.include?(current_user)
-      @user.outgoing_friend_requests.find_by(receiver: current_user).accept
-    else
-      current_user.requested_friends << @user
-    end
+    current_user.request_friend(@user)
     respond_to do |format|
       format.html { redirect_to request.referrer }
       format.js

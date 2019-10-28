@@ -5,7 +5,8 @@
         <ul>
         <% requests.each do |request| %>
         <li>
-            <%= "#{request.sender.name} wants to be your friend" %>
+            <%= link_to request.sender.name, request.sender %>
+            wants to be your friend
             <%= render partial: 'users/accept_friend', locals: {sender_id: request.sender_id} %>
             <%= render partial: 'users/decline_friend', locals: {sender_id: request.sender_id} %>
         </li>

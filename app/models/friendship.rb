@@ -1,5 +1,6 @@
 class Friendship < ActiveRecord::Base
     validate :not_self
+    validates :friend, presence: true, uniqueness: { scope: :user, message: 'friendship already exists' }
     after_create :create_inverse_relationship
     after_destroy :destroy_inverse_relationship
   

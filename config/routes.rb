@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   root 'users#index'
   resources :users
   resources :friend_requests, only: [:create, :destroy]
+  resources :friendships, only: [:index, :destroy]
 end
