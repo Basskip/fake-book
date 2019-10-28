@@ -1,0 +1,5 @@
+<%= form_with model:current_user.incoming_friend_requests.find_by(sender_id: sender_id),
+              local: true, method: :delete do |f| %>
+    <%= hidden_field_tag :decline, true %>
+    <%= f.submit "Decline" %>
+<% end %>
