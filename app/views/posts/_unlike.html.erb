@@ -1,0 +1,5 @@
+<%= form_with model: post.likes.find_by(user: current_user),
+                method: :delete, remote: true do |f| %>
+    <%= f.hidden_field :post_id, value: post.id %>
+    <%= f.submit "Unlike" %>
+<% end %>

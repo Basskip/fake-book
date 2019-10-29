@@ -1,0 +1,7 @@
+</div>
+    <p><%= link_to post.user.name, post.user %></p>
+    <p><%= post.body %></p>
+    <%= render partial: 'posts/like_form', locals: { post: post } %>
+    <p>Posted at <%= post.created_at %></p>
+    <p><%= link_to 'permalink', post %>
+<div>

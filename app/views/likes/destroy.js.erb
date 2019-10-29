@@ -1,0 +1,1 @@
+$("#like-form-<%=@post.id%>").html("<%= escape_javascript(render(partial: 'posts/like_form', locals: {post: @post})) %>");

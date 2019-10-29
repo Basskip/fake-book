@@ -1,0 +1,7 @@
+<%= content_tag(:div, nil, id: "like-form-#{post.id}") do
+        if current_user.likes?(post)
+            render partial: 'posts/unlike', locals: { post: post }
+        else
+            render partial: 'posts/like', locals: { post: post }
+        end
+end %>
