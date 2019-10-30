@@ -1,7 +1,15 @@
-</div>
+<article>
     <p><%= link_to post.user.name, post.user %></p>
     <p><%= post.body %></p>
     <%= render partial: 'posts/like_form', locals: { post: post } %>
+    <span id="post-<%=post.id%>-likes">
+        <%= post.likes.count %>
+    </span> 
+    <%= link_to "likes", post_likes_path(post) %>
     <p>Posted at <%= post.created_at %></p>
+    <ul>
+        <%= render post.comments %>
+    </ul>
+    <%= render partial: 'comments/comment_form', locals: { post: post } %>
     <p><%= link_to 'permalink', post %>
-<div>
+</article>

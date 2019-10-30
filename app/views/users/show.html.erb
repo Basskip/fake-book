@@ -1,5 +1,7 @@
 <h1><%= @user.name %>'s Page</h1>
 
-<%= render 'friendship_form' %>
+<%= gravatar_for @user %>
+
+<%= render partial: 'friendship_form', locals: { user: @user }%>  
 
 <%= render @user.posts %>

@@ -1,4 +1,4 @@
-<%= form_with model:current_user.outgoing_friend_requests.find_by(receiver_id: @user.id),
+<%= form_with model:current_user.outgoing_friend_requests.find_by(receiver_id: user.id),
               local: true, method: :delete do |f| %>
   <%= f.submit "Cancel friend request" %>
 <% end %>

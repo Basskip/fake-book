@@ -1,7 +1,7 @@
 class LikesController < ApplicationController
 
     def create
-        @post = Post.find(params[:like][:post_id])
+        @post = Post.find(params[:post_id])
         current_user.like(@post)
         respond_to do |format|
             format.html { redirect_to request.referrer }
@@ -10,11 +10,15 @@ class LikesController < ApplicationController
     end
     
     def destroy
-        @post = Post.find(params[:like][:post_id])
+        @post = Post.find(params[:post_id])
         current_user.unlike(@post)
         respond_to do |format|
             format.html { redirect_to request.referrer }
             format.js
         end
+    end
+
+    def index
+        @likes = Post.find(params[:post_id]).likes
     end
 end

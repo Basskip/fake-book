@@ -1,4 +1,3 @@
-<%= form_with model: post.likes.build, remote: true do |f| %>
-    <%= f.hidden_field :post_id, value: post.id %>
+<%= form_with model: [post, post.likes.build], remote: true do |f| %>
     <%= f.submit "Like" %>
 <% end %>

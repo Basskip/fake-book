@@ -1,1 +1,15 @@
 <h1>All users</h1>
+
+<ul>
+    <% friends = current_user.friends %>
+    <% requests = current_user.requested_friends %>
+    <% requesting = current_user.requesting_friends %>
+    <% @users.each do |user| %>
+        <li>
+            <%= link_to user.name, user %>
+            <% unless friends.include?(user) || requests.include?(user) || requesting.include?(user) %>
+                <%= render partial: 'friendship_form', locals: { user: user }%>
+            <% end %>
+        </li>
+    <% end %>            
+</ul>

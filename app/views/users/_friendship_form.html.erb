@@ -1,18 +1,18 @@
-<% unless current_user == @user %>
+<% unless current_user == user %>
   <div id="friend_form">
-    <% if @user.friends.include?(current_user) %>
+    <% if user.friends.include?(current_user) %>
       <p>You're friends!</p>
-      <%= render 'unfriend' %>
+      <%= render partial: 'unfriend', locals: {user: user} %>
     <% else %>
-      <% if current_user.requested_friends.include?(@user) %>
-        <%= render 'cancel_friend' %>
+      <% if current_user.requested_friends.include?(user) %>
+        <%= render partial: 'cancel_friend', locals: {user: user} %>
       <% else %>
-        <% if current_user.requesting_friends.include?(@user) %>
-          <%= "#{@user.name} wants to be your friend" %>
-          <%= render partial: 'users/accept_friend', locals: {sender_id: @user.id} %>
-          <%= render partial: 'users/decline_friend', locals: {sender_id: @user.id} %>
+        <% if current_user.requesting_friends.include?(user) %>
+          <%= "#{user.name} wants to be your friend" %>
+          <%= render partial: 'users/accept_friend', locals: {sender_id: user.id} %>
+          <%= render partial: 'users/decline_friend', locals: {sender_id: user.id} %>
         <% else %>
-          <%= render 'send_friend' %>
+          <%= render partial: 'send_friend', locals: {user: user} %>
         <% end %>
       <% end %>  
     <% end %>
