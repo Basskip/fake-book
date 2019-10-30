@@ -1,6 +1,10 @@
 <h1><%= @user.name %>'s Page</h1>
 
-<%= gravatar_for @user %>
+<% if @user.image %>
+    <%= image_tag "#{@user.image}/?type=normal" %>
+<% else %>
+    <%= gravatar_for @user %>
+<% end %>
 
 <%= render partial: 'friendship_form', locals: { user: @user }%>  
 
