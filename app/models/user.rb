@@ -14,6 +14,8 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   validates :name, presence: true
 
+  after_create :send_welcome_email
+
   def request_friend(friend)
     if friend.requested_friends.include?(self)
       friend.outgoing_friend_requests.find_by(receiver: self).accept
@@ -44,5 +46,11 @@ class User < ApplicationRecord
       # uncomment the line below to skip the confirmation emails.
       # user.skip_confirmation!
     end
+  end
+
+  private
+
+  def send_welcome_email
+    WelcomeMailer.with(user: self).welcome_email.deliver_later
   end
 end

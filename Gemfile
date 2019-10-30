@@ -8,6 +8,7 @@ gem 'faker'
 gem 'jquery-rails'
 gem 'omniauth-facebook'
 gem 'figaro'
+gem "letter_opener", :group => :development
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
